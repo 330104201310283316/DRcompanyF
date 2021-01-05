@@ -1,0 +1,48 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="~/css/vue.css">
+</head>
+<body>
+    <div id="app">正在为您全速加载...</div>
+    <script>
+        window.$docsify = {
+            name: '测试文档',
+            //搜索
+            search: {
+                //paths: ['/', '/docs/home', '/docs/example'],
+                placeholder: '搜索',
+                noData: '找不到结果',
+                depth: 6
+            },
+
+            //侧边栏，开启后不会自动生成，不开启会读取md标题自动生成
+            loadSidebar: true, //如果开启，在_sidebar.md手动配置侧边栏
+            subMaxLevel: 3,  //显示多级标题，数字代表显示到第几层
+
+            //导航栏
+            loadNavbar: true,
+
+            //封面
+            coverpage: true, //开关封面
+            onlyCover: false //为true时首页只显示封面
+        }
+    </script>
+    <script src="//unpkg.com/docsify/lib/docsify.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/search.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/ga.min.js"></script>
+    <script src="//unpkg.com/docsify/lib/plugins/matomo.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-bash.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-markdown.min.js"></script>
+    <script src="//unpkg.com/prismjs/components/prism-nginx.min.js"></script>
+</body>
+</html>
