@@ -1,0 +1,658 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DR.Models</name>
+    </assembly>
+    <members>
+        <member name="T:DR.Models.ApiResponse">
+            <summary>
+            返回json包装工具
+            </summary>
+        </member>
+        <member name="T:DR.Models.UserInfo">
+            <summary>
+            用户信息
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserInfo.id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserInfo.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserInfo.LoginType">
+             <summary>
+            登录类型（0:限制账号，1:不限制账号）
+             </summary>
+        </member>
+        <member name="P:DR.Models.UserInfo.AuthRole">
+             <summary>
+            用户权限
+             </summary>
+        </member>
+        <member name="P:DR.Models.UserInfo.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="T:DR.Models.Config">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="P:DR.Models.Config.Configuration">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="T:DR.Models.PictureInfo">
+            <summary>
+            图片
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.Users">
+            <summary>
+            用户表，做联级查询
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.UserID">
+            <summary>
+            管理员ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.PictureContent">
+            <summary>
+            图片路径
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.PictureTitle">
+            <summary>
+            图片标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.PictureExplain">
+            <summary>
+            图片说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.RecommendIndex">
+             <summary>
+            推荐指数
+             </summary>
+        </member>
+        <member name="T:DR.Models.Settings">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="P:DR.Models.Settings.ConfigKey">
+            <summary>
+            key
+            </summary>
+        </member>
+        <member name="P:DR.Models.Settings.ConfigValues">
+            <summary>
+            values
+            </summary>
+        </member>
+        <member name="T:DR.Models.Test">
+            <summary>
+            testdb
+            </summary>
+        </member>
+        <member name="P:DR.Models.Test.Name">
+            <summary>
+            test
+            </summary>
+        </member>
+        <member name="T:DR.Models.Users">
+            <summary>
+            用户表
+            </summary>
+        </member>
+        <member name="P:DR.Models.Users.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:DR.Models.Users.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DR.Models.Users.PassWord">
+             <summary>
+            密码
+             </summary>
+        </member>
+        <member name="P:DR.Models.Users.LoginType">
+             <summary>
+            登录类型（0:限制账号，1:不限制账号）
+             </summary>
+        </member>
+        <member name="P:DR.Models.Users.AuthRole">
+             <summary>
+            用户权限
+             </summary>
+        </member>
+        <member name="T:DR.Models.WordInfo">
+            <summary>
+            上传文章详情表
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.Users">
+            <summary>
+            用户表，做联级查询
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.UserID">
+            <summary>
+            管理员ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.HtmlContent">
+            <summary>
+            文章html内容
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.HtmlTitle">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.HtmlExplain">
+            <summary>
+            文章说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.ArticleType">
+            <summary>
+            文章类型
+            </summary>
+        </member>
+        <member name="T:DR.Models.ModelBase">
+            <summary>
+            数据库表base模型
+            </summary>
+        </member>
+        <member name="P:DR.Models.ModelBase.Id">
+            <summary>
+            表主键
+            </summary>
+        </member>
+        <member name="P:DR.Models.ModelBase.CreateTime">
+            <summary>
+            创建时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.ModelBase.LastModifiedTime">
+            <summary>
+            最后修改时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.ModelBase.Disable">
+            <summary>
+            是否禁用（假删除）
+            </summary>
+        </member>
+        <member name="T:DR.Models.RegisterDto">
+            <summary>
+            注册
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterDto.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="T:DR.Models.RegisterFreeDto">
+            <summary>
+            永久账号注册
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterFreeDto.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterFreeDto.UserName">
+            <summary>
+             用户名
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterFreeDto.PassWord">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:DR.Models.LoginDto">
+            <summary>
+            登录
+            </summary>
+        </member>
+        <member name="P:DR.Models.LoginDto.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DR.Models.LoginDto.PassWord">
+            <summary>
+            密码
+            </summary>
+        </member>
+        <member name="T:DR.Models.FreeDto">
+            <summary>
+            删除永久账号
+            </summary>
+        </member>
+        <member name="P:DR.Models.FreeDto.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="T:DR.Models.UserDto">
+            <summary>
+            用户列表
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.Email">
+            <summary>
+            邮箱
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.UserName">
+            <summary>
+            用户名
+            </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.PassWord">
+             <summary>
+            密码
+             </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.LoginType">
+             <summary>
+            登录类型（0:限制账号，1:不限制账号）
+             </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.AuthRole">
+             <summary>
+            用户权限
+             </summary>
+        </member>
+        <member name="P:DR.Models.UserDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="T:DR.Models.UpdateSettingsDto">
+            <summary>
+            修改配置
+            </summary>
+        </member>
+        <member name="P:DR.Models.UpdateSettingsDto.Id">
+            <summary>
+            Id
+            </summary>
+        </member>
+        <member name="P:DR.Models.UpdateSettingsDto.ConfigKey">
+            <summary>
+            Key
+            </summary>
+        </member>
+        <member name="P:DR.Models.UpdateSettingsDto.ConfigValues">
+            <summary>
+            Values
+            </summary>
+        </member>
+        <member name="T:DR.Models.CreateUpdateTestDto">
+            <summary>
+            testdto
+            </summary>
+        </member>
+        <member name="P:DR.Models.CreateUpdateTestDto.TestName">
+            <summary>
+            testname
+            </summary>
+        </member>
+        <member name="T:DR.Models.WordDto">
+            <summary>
+            文件上传
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordDto.id">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordDto.HtmlTitle">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordDto.HtmlExplain">
+            <summary>
+            文章说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordDto.HtmlContent">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="T:DR.Models.WordUpdateDto">
+            <summary>
+            word修改
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordUpdateDto.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordUpdateDto.HtmlContent">
+            <summary>
+            文本内容
+            </summary>
+        </member>
+        <member name="T:DR.Models.WordSelectDto">
+            <summary>
+            查询条件
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordSelectDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordSelectDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordSelectDto.pageNum">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordSelectDto.pageSize">
+            <summary>
+            页数
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.UserName">
+            <summary>
+            添加人姓名
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.HtmlContent">
+            <summary>
+            文章html内容
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.ArticleType">
+            <summary>
+            文章类型
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.HtmlTitle">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordListDto.HtmlExplain">
+            <summary>
+            文章说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordLessDto.HtmlContent">
+            <summary>
+            文章html内容
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordLessDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="P:DR.Models.WordLessDto.HtmlTitle">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordLessDto.HtmlExplain">
+            <summary>
+            文章说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureDto.url">
+            <summary>
+            路径
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureDto.PictureTitle">
+             <summary>
+            标题
+             </summary>
+        </member>
+        <member name="P:DR.Models.PictureDto.PictureExplain">
+            <summary>
+            说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureDto.Index">
+            <summary>
+            推荐指数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureSelectDto.StartTime">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureSelectDto.EndTime">
+            <summary>
+            结束时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureSelectDto.pageNum">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureSelectDto.pageSize">
+            <summary>
+            页数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.ID">
+            <summary>
+            ID
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.UserName">
+            <summary>
+            添加人姓名
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.PictureUrl">
+            <summary>
+            图片路径
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.PictureTitle">
+            <summary>
+            图片标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.PictureExplain">
+            <summary>
+            图片说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureListDto.Index">
+            <summary>
+            推荐指数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.UserName">
+            <summary>
+            添加人姓名
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.PictureUrl">
+            <summary>
+            图片路径
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.PictureTitle">
+            <summary>
+            图片标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.PictureExplain">
+            <summary>
+            图片说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.Index">
+            <summary>
+            推荐指数
+            </summary>
+        </member>
+        <member name="T:DR.Models.AuthRole">
+            <summary>
+            Role
+            </summary>
+        </member>
+        <member name="F:DR.Models.AuthRole.Admin">
+            <summary>
+            管理员
+            </summary>
+        </member>
+        <member name="F:DR.Models.AuthRole.User">
+            <summary>
+            用户
+            </summary>
+        </member>
+        <member name="T:DR.Models.LoginType">
+            <summary>
+            登录类型
+            </summary>
+        </member>
+        <member name="F:DR.Models.LoginType.LimitWeb">
+            <summary>
+            限制账号
+            </summary>
+        </member>
+        <member name="F:DR.Models.LoginType.FreeWeb">
+            <summary>
+            不限制账号
+            </summary>
+        </member>
+        <member name="T:DR.Models.RecommendIndex">
+            <summary>
+            推荐指数
+            </summary>
+        </member>
+        <member name="F:DR.Models.RecommendIndex.one">
+             <summary>
+            一星
+             </summary>
+        </member>
+        <member name="F:DR.Models.RecommendIndex.Two">
+            <summary>
+            二星
+            </summary>
+        </member>
+        <member name="F:DR.Models.RecommendIndex.Three">
+            <summary>
+            三星
+            </summary>
+        </member>
+        <member name="F:DR.Models.RecommendIndex.Four">
+            <summary>
+            四星
+            </summary>
+        </member>
+        <member name="F:DR.Models.RecommendIndex.Five">
+             <summary>
+            五星
+             </summary>
+        </member>
+        <member name="T:DR.Models.ArticleType">
+            <summary>
+            文章类型，暂保留
+            </summary>
+        </member>
+        <member name="T:DR.Models.CodeAndMessage">
+            <summary>
+            返回到前端的状态码和信息
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.UID">
+            <summary>
+            用户id
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.ApiName">
+            <summary>
+            调了哪个接口
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.IP">
+            <summary>
+            请求来源
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.Headers">
+            <summary>
+            请求头
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.QueryString">
+            <summary>
+            请求参数
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.StatusCode">
+            <summary>
+            StatusCode
+            </summary>
+        </member>
+        <member name="P:DR.Models.RequestLogs.Result">
+            <summary>
+            请求反回结果
+            </summary>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DR.EFCore.DbMigrations\DR.EFCore.csproj" />
+    <ProjectReference Include="..\DR.Extensions\DR.Extensions.csproj" />
+    <ProjectReference Include="..\DR.Models\DR.Models.csproj" />
+    <ProjectReference Include="..\DR.Redis\DR.Redis.csproj" />
+  </ItemGroup>
+
+</Project>

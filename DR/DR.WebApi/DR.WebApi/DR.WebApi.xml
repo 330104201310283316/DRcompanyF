@@ -1,0 +1,329 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>DR.WebApi</name>
+    </assembly>
+    <members>
+        <member name="T:DR.WebApi.Controllers.HealthController">
+            <summary>
+            consul服务发现健康检查
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.HealthController.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            健康发现
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="M:DR.WebApi.Controllers.HealthController.Index">
+            <summary>
+            心跳
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Controllers.LoginController">
+            <summary>
+            用户API
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.#ctor(DR.Services.ITestService,Microsoft.AspNetCore.Http.IHttpContextAccessor,DR.Services.ISendService)">
+            <summary>
+            注入
+            </summary>
+            <param name="TestService"></param>
+            <param name="httpContext"></param>
+            <param name="sendService"></param>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.Register(DR.Models.RegisterDto)">
+            <summary>
+            注册
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.RegisterFree(DR.Models.RegisterFreeDto)">
+            <summary>
+            永久账号注册
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.FreeDel(DR.Models.FreeDto)">
+            <summary>
+            删除永久账号
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.AuthLogin(DR.Models.LoginDto)">
+            <summary>
+            登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.UsersInfo(System.Int32,System.Int32,System.String)">
+            <summary>
+            用户查询列表
+            </summary>
+            <param name="pageNum"></param>
+            <param name="pageSize"></param>
+            <param name="Email"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.LoginController.ExportExcel">
+            <summary>
+            导出
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Controllers.PictureUpLoadController">
+            <summary>
+            图片Api
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.#ctor(Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            注入
+            </summary>
+            <param name="configuration"></param>
+            <param name="httpContext"></param>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureUpload(DR.Models.PictureDto)">
+            <summary>
+            图片上传
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureInfo(DR.Models.PictureSelectDto)">
+            <summary>
+            图片列表
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureDetails(System.Int64)">
+            <summary>
+            查看详情
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureDel(System.Int64)">
+            <summary>
+            删除图片
+            </summary>
+            <param name="id"></param>说
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Controllers.SettingController">
+            <summary>
+            配置文件
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.SettingController.Settings">
+            <summary>
+            获取配置文件
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.SettingController.UpdateSettings(DR.Models.UpdateSettingsDto)">
+            <summary>
+            设置配置文件
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Controllers.TestController">
+            <summary>
+            test
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.Test">
+            <summary>
+            test
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.Testhangfire">
+            <summary>
+            测试hangfire
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestOther">
+            <summary>
+            测试接入其他库
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestEFCoreAndRedis">
+            <summary>
+            测试efcore和Redis
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestEFCoreAndRedisAdd(DR.Models.CreateUpdateTestDto)">
+            <summary>
+            测试efcore和Redis
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestLogin">
+            <summary>
+            测试登录
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestAuth">
+            <summary>
+            测试身份授权拦截器
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.GetQRCode(System.String,System.Int32)">
+            <summary>
+            生成二维码
+            </summary>
+            <param name="url">存储内容</param>
+            <param name="pixel">像素大小</param>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Controllers.UpLoadWordController">
+            <summary>
+            word文档API
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.#ctor(DR.Services.ITestService,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            注入
+            </summary>
+            <param name="TestService"></param>
+            <param name="configuration"></param>
+            <param name="httpContext"></param>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.WordsUpLoad(DR.Models.WordDto)">
+            <summary>
+            Word文档上传
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.WordInfo(DR.Models.WordSelectDto)">
+            <summary>
+            Word列表
+            </summary>
+            <param name="body"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.WordDetails(System.Int64)">
+            <summary>
+            查看详情
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.WordDel(System.Int64)">
+            <summary>
+            删除文档内容
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.UploadFileAsync(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            文件上传服务
+            </summary>
+            <param name="file"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.UpLoadWordController.UploadFileMore(System.Collections.Generic.List{Microsoft.AspNetCore.Http.IFormFile})">
+            <summary>
+            多文件上传服务
+            </summary>
+            <param name="files"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.Startup">
+            <summary>
+            Startup
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            注入方法，读取config文件
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:DR.WebApi.Startup.Configuration">
+            <summary>
+            获取cofig的路径
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            此方法由运行时调用。使用此方法可将服务添加到容器中。
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:DR.WebApi.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            此方法由运行时调用。使用此方法配置HTTP请求管道。
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="M:DR.WebApi.ApiCoreServiceExtensions.AddApiCoreService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置 业务逻辑层注入 Startup 辅助类
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.ApiCorsExtensions.AddApiCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            配置 api Cors 跨域 Startup 辅助类
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.AuthFilter">
+            <summary>
+            自定义授权拦截器
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.AuthFilter.OnAuthorization(Microsoft.AspNetCore.Mvc.Filters.AuthorizationFilterContext)">
+            <summary>
+            请求验证，当前验证部分不要抛出异常，ExceptionFilter不会处理
+            </summary>
+            <param name="context"></param>
+        </member>
+        <member name="T:DR.WebApi.ConsulHelper">
+            <summary>
+            服务发现帮助类
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.ConsulHelper.ConsulRegist(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            健康检查
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="T:DR.WebApi.ErrorWrappingMiddleware">
+            <summary>
+            报错封装
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.ErrorWrappingMiddleware.#ctor(Microsoft.AspNetCore.Http.RequestDelegate)">
+            <summary>
+            注入
+            </summary>
+            <param name="next"></param>
+        </member>
+        <member name="T:DR.WebApi.MyDashboardAuthorizationFilter">
+            <summary>
+            Hangfire仪表盘配置授权
+            </summary>
+        </member>
+    </members>
+</doc>

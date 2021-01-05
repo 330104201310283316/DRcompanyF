@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <OutputType>Exe</OutputType>
+    <StartupObject></StartupObject>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>D:\DR\DR.WebApi\DR.WebApi\DR.WebApi.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Consul" Version="1.6.1.1" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.NewtonsoftJson" Version="3.1.7" />
+    <PackageReference Include="Microsoft.OpenApi" Version="1.2.3" />
+    <PackageReference Include="NPOI" Version="2.5.2" />
+    <PackageReference Include="Serilog.AspNetCore" Version="3.4.0" />
+    <PackageReference Include="Serilog.Sinks.RollingFile" Version="3.3.0" />
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="5.6.3" />
+    <PackageReference Include="Swashbuckle.AspNetCore.SwaggerGen" Version="5.6.3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BDTH.HangFire\DR.HangFire.csproj" />
+    <ProjectReference Include="..\DR.Configs\DR.Configs.csproj" />
+    <ProjectReference Include="..\DR.EFCore.DbMigrations\DR.EFCore.csproj" />
+    <ProjectReference Include="..\DR.Extensions\DR.Extensions.csproj" />
+    <ProjectReference Include="..\DR.Models\DR.Models.csproj" />
+    <ProjectReference Include="..\DR.MongoDB\DR.MongoDB.csproj" />
+    <ProjectReference Include="..\DR.Services\DR.Services.csproj" />
+  </ItemGroup>
+
+
+</Project>
