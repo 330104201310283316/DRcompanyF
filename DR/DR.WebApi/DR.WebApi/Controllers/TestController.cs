@@ -33,6 +33,7 @@ namespace DR.WebApi.Controllers
         private IConfiguration _configuration;
         private IHttpContextAccessor _httpContext;
         private IBackgroundJobClient _backgroundJobs;
+        private IEFBaseService _baseService;
         /// <summary>
         /// 注入
         /// </summary>
@@ -40,12 +41,14 @@ namespace DR.WebApi.Controllers
         /// <param name="backgroundJobs"></param>
         /// <param name="configuration"></param>
         /// <param name="httpContext"></param>
-        public TestController(ITestService TestService, IBackgroundJobClient backgroundJobs, IConfiguration configuration, IHttpContextAccessor httpContext)
+        /// <param name="efbaseservice"></param>
+        public TestController(ITestService TestService, IBackgroundJobClient backgroundJobs, IConfiguration configuration, IHttpContextAccessor httpContext, IEFBaseService efbaseservice)
         {
             this._TestService = TestService;
             this._configuration = configuration;
             this._httpContext = httpContext;
             this._backgroundJobs = backgroundJobs;
+            this._baseService = efbaseservice;
         }
 
         /// <summary>
@@ -69,7 +72,7 @@ namespace DR.WebApi.Controllers
         {
             hangFireText text = new hangFireText();
             _backgroundJobs.Enqueue(() => text.moreAdd(10000));
-                return Ok(new ApiResponse(true));
+            return Ok(new ApiResponse(true));
         }
         /// <summary>
         /// 测试接入其他库
@@ -93,9 +96,24 @@ namespace DR.WebApi.Controllers
         [Route("TestEFCoreAndRedis")]
         public IActionResult TestEFCoreAndRedis()
         {
-
-            List<Test> tests = _TestService.GetAll();
+            List<Test> tests = _baseService.GetListWriteBy<Test>(x => x.Disable == false);
             return Ok(new ApiResponse(tests));
+        }
+        /// <summary>
+        /// 测试efcore修改
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("TestEFCoreModify")]
+        public IActionResult TestEFCoreModify()
+        {
+            //假删除
+            var tests = _baseService.GetWriteBy<Test>(x => x.Disable == false);
+            tests.Disable = true;
+            int test = _baseService.ModifyNo(tests);
+            if(test<=0)
+                return Ok(new ApiResponse(code:CodeAndMessage.修改失败));
+            return Ok(new ApiResponse(test));
         }
 
         /// <summary>
@@ -106,9 +124,14 @@ namespace DR.WebApi.Controllers
         [Route("TestEFCoreAndRedisAdd")]
         public IActionResult TestEFCoreAndRedisAdd([FromBody] CreateUpdateTestDto body)
         {
-
-            Test test = _TestService.Add(body);
-
+            Test test = new Test()
+            {
+                Id = SequenceID.GetSequenceID(),
+                Name = body.TestName
+            };
+            var tests = _baseService.Add(test);
+            if (tests <= 0)
+                return Ok(new ApiResponse(code: CodeAndMessage.新增失败));
             return Ok(new ApiResponse(test));
         }
 

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace DR.Services.Services
+namespace DR.Services
 {
     public class SendService:ISendService
     {

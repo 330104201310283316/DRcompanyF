@@ -121,6 +121,12 @@
             配置文件
             </summary>
         </member>
+        <member name="M:DR.WebApi.Controllers.SettingController.#ctor(Microsoft.AspNetCore.Http.IHttpContextAccessor)">
+            <summary>
+            注入
+            </summary>
+            <param name="httpContext"></param>
+        </member>
         <member name="M:DR.WebApi.Controllers.SettingController.Settings">
             <summary>
             获取配置文件
@@ -138,6 +144,16 @@
             <summary>
             test
             </summary>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.#ctor(DR.Services.ITestService,Hangfire.IBackgroundJobClient,Microsoft.Extensions.Configuration.IConfiguration,Microsoft.AspNetCore.Http.IHttpContextAccessor,DR.Services.IEFBaseService)">
+            <summary>
+            注入
+            </summary>
+            <param name="TestService"></param>
+            <param name="backgroundJobs"></param>
+            <param name="configuration"></param>
+            <param name="httpContext"></param>
+            <param name="efbaseservice"></param>
         </member>
         <member name="M:DR.WebApi.Controllers.TestController.Test">
             <summary>
@@ -160,6 +176,12 @@
         <member name="M:DR.WebApi.Controllers.TestController.TestEFCoreAndRedis">
             <summary>
             测试efcore和Redis
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.TestController.TestEFCoreModify">
+            <summary>
+            测试efcore修改
             </summary>
             <returns></returns>
         </member>
@@ -244,6 +266,17 @@
             <param name="files"></param>
             <returns></returns>
         </member>
+        <member name="T:DR.WebApi.Program">
+            <summary>
+            Program
+            </summary>
+        </member>
+        <member name="M:DR.WebApi.Program.Main(System.String[])">
+            <summary>
+            程序入口
+            </summary>
+            <param name="args"></param>
+        </member>
         <member name="T:DR.WebApi.Startup">
             <summary>
             Startup
@@ -273,12 +306,22 @@
             <param name="app"></param>
             <param name="env"></param>
         </member>
+        <member name="T:DR.WebApi.ApiCoreServiceExtensions">
+            <summary>
+            业务逻辑层注入
+            </summary>
+        </member>
         <member name="M:DR.WebApi.ApiCoreServiceExtensions.AddApiCoreService(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>
             配置 业务逻辑层注入 Startup 辅助类
             </summary>
             <param name="services"></param>
             <returns></returns>
+        </member>
+        <member name="T:DR.WebApi.ApiCorsExtensions">
+            <summary>
+            跨域
+            </summary>
         </member>
         <member name="M:DR.WebApi.ApiCorsExtensions.AddApiCors(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
             <summary>

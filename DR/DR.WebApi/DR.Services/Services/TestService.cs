@@ -7,22 +7,22 @@ using DR.EFCore;
 using DR.Extensions;
 using DR.Models;
 using DR.Redis;
+using Microsoft.EntityFrameworkCore;
 using QRCoder;
 
 namespace DR.Services
 {
     public class TestService : ITestService
     {
+        private static IEFBaseService _EFBaseService;
         public Test Add(CreateUpdateTestDto body)
         {
-            using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
             Test test = new Test()
             {
                 Id = SequenceID.GetSequenceID(),
                 Name = body.TestName
             };
-            context.Add(test);
-            context.SaveChanges();
+            _EFBaseService.Add(test);
             TestRedis.Del();
             return test;
         }
@@ -33,17 +33,15 @@ namespace DR.Services
         /// <returns></returns>
         public bool moreAdd(int i)
         {
-            using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
             Test test = new Test();
-            for (int j=0;j<= i; j++)
+            for (int j = 0; j <= i; j++)
             {
                 test = new Test()
                 {
                     Id = SequenceID.GetSequenceID(),
                     Name = "hangfire"
                 };
-                context.Add(test);
-                context.SaveChanges();
+                _EFBaseService.Add(test);
             }
             TestRedis.Del();
             return true;
@@ -54,13 +52,13 @@ namespace DR.Services
         {
             if (!TestRedis.GetAll(out List<Test> tests))
             {
-                using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
-                tests = context.Tests.Select(x => x).ToList();
+                tests= _EFBaseService.GetListWriteBy<Test>(u=>u.Disable==false).ToList();
                 if (tests != null && tests.Count > 0)
                     TestRedis.SaveAll(tests);
             }
             return tests;
         }
+
         /// <summary>
         /// 
         /// </summary>

@@ -26,6 +26,8 @@ namespace DR.WebApi
             */
             services.AddScoped<ITestService, TestService>();
             services.AddScoped<ISendService, SendService>();
+            services.AddScoped<IEFBaseService, EFBaseService>();
+            services.AddScoped<IExcelService, ExcelService>();
             services.AddScoped<DBRequestLogs>();
             return services;
         }

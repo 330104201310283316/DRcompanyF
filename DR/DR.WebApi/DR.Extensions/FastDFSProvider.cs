@@ -64,5 +64,7 @@ namespace DR.Extensions
                 Console.WriteLine("FastDFSClient.RemoveFile" + str);
             }
         }
+
+
     }
 }

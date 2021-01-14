@@ -50,5 +50,14 @@ namespace DR.Models
         /// </summary>
         用户名重复 = 4005,
         #endregion
+
+        /// <summary>
+        /// 修改失败
+        /// </summary>
+        修改失败 = 5001,
+        /// <summary>
+        /// 新增失败
+        /// </summary>
+        新增失败 = 5002,
     }
 }

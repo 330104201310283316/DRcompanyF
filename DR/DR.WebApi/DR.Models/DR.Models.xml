@@ -9,6 +9,34 @@
             返回json包装工具
             </summary>
         </member>
+        <member name="P:DR.Models.ApiResponse.Data">
+            <summary>
+            data
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiResponse.Total">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiResponse.Code">
+            <summary>
+            报错码
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiResponse.Message">
+            <summary>
+            报错信息
+            </summary>
+        </member>
+        <member name="M:DR.Models.ApiResponse.#ctor(System.Object,System.Int32,DR.Models.CodeAndMessage)">
+            <summary>
+            返回格式封装
+            </summary>
+            <param name="data"></param>
+            <param name="total"></param>
+            <param name="code"></param>
+        </member>
         <member name="T:DR.Models.UserInfo">
             <summary>
             用户信息
@@ -107,6 +135,11 @@
         <member name="P:DR.Models.Test.Name">
             <summary>
             test
+            </summary>
+        </member>
+        <member name="P:DR.Models.Test.Xxx">
+            <summary>
+            测试
             </summary>
         </member>
         <member name="T:DR.Models.Users">
@@ -389,6 +422,11 @@
             页数
             </summary>
         </member>
+        <member name="T:DR.Models.WordListDto">
+            <summary>
+            文档列表
+            </summary>
+        </member>
         <member name="P:DR.Models.WordListDto.ID">
             <summary>
             ID
@@ -424,6 +462,11 @@
             文章说明
             </summary>
         </member>
+        <member name="T:DR.Models.WordLessDto">
+            <summary>
+            文档详情
+            </summary>
+        </member>
         <member name="P:DR.Models.WordLessDto.HtmlContent">
             <summary>
             文章html内容
@@ -442,6 +485,11 @@
         <member name="P:DR.Models.WordLessDto.HtmlExplain">
             <summary>
             文章说明
+            </summary>
+        </member>
+        <member name="T:DR.Models.PictureDto">
+            <summary>
+            图片列表
             </summary>
         </member>
         <member name="P:DR.Models.PictureDto.url">
@@ -464,6 +512,11 @@
             推荐指数
             </summary>
         </member>
+        <member name="T:DR.Models.PictureSelectDto">
+            <summary>
+            图片查询
+            </summary>
+        </member>
         <member name="P:DR.Models.PictureSelectDto.StartTime">
             <summary>
             开始时间
@@ -482,6 +535,11 @@
         <member name="P:DR.Models.PictureSelectDto.pageSize">
             <summary>
             页数
+            </summary>
+        </member>
+        <member name="T:DR.Models.PictureListDto">
+            <summary>
+            图片上传
             </summary>
         </member>
         <member name="P:DR.Models.PictureListDto.ID">
@@ -517,6 +575,11 @@
         <member name="P:DR.Models.PictureListDto.Index">
             <summary>
             推荐指数
+            </summary>
+        </member>
+        <member name="T:DR.Models.PictureLessDto">
+            <summary>
+            图片详情
             </summary>
         </member>
         <member name="P:DR.Models.PictureLessDto.UserName">
@@ -617,6 +680,66 @@
         <member name="T:DR.Models.CodeAndMessage">
             <summary>
             返回到前端的状态码和信息
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.Success">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.请登录后访问">
+            <summary>
+            未登录
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.权限不足">
+            <summary>
+            权限不足
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.UnKnownError">
+            <summary>
+            系统报错
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.Token已过期请重新登录">
+            <summary>
+            Token失效
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.用户名或密码错误">
+            <summary>
+            账号密码错误
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.注册时间已经超过2小时">
+            <summary>
+            超时
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.注册成功">
+            <summary>
+            成功
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.用户名重复">
+            <summary>
+            重复
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.修改失败">
+            <summary>
+            修改失败
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.新增失败">
+            <summary>
+            新增失败
+            </summary>
+        </member>
+        <member name="T:DR.Models.RequestLogs">
+            <summary>
+            测试mongodb
             </summary>
         </member>
         <member name="P:DR.Models.RequestLogs.UID">

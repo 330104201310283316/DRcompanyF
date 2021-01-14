@@ -123,7 +123,7 @@ namespace DR.WebApi
                 endpoints.MapControllers();
             });
             app.UseStaticFiles();
-            this.Configuration.ConsulRegist();
+           // this.Configuration.ConsulRegist();
         }
     }
 }
