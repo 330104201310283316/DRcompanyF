@@ -4,6 +4,40 @@
         <name>DR.Models</name>
     </assembly>
     <members>
+        <member name="T:DR.Models.ApiNResponse">
+            <summary>
+            业务message 返回
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiNResponse.Data">
+            <summary>
+            data
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiNResponse.Total">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiNResponse.Code">
+            <summary>
+            报错码
+            </summary>
+        </member>
+        <member name="P:DR.Models.ApiNResponse.Message">
+            <summary>
+            报错信息
+            </summary>
+        </member>
+        <member name="M:DR.Models.ApiNResponse.#ctor(System.Object,System.Int32,DR.Models.CodeAndMessage,System.String)">
+            <summary>
+            返回格式封装
+            </summary>
+            <param name="data"></param>
+            <param name="total"></param>
+            <param name="code"></param>
+            <param name="message"></param>
+        </member>
         <member name="T:DR.Models.ApiResponse">
             <summary>
             返回json包装工具
@@ -112,6 +146,16 @@
             推荐指数
              </summary>
         </member>
+        <member name="P:DR.Models.PictureInfo.PictureType">
+             <summary>
+            图片分类
+             </summary>
+        </member>
+        <member name="P:DR.Models.PictureInfo.PhotoType">
+             <summary>
+            产品图片类型
+             </summary>
+        </member>
         <member name="T:DR.Models.Settings">
             <summary>
             配置文件
@@ -147,6 +191,11 @@
             用户表
             </summary>
         </member>
+        <member name="P:DR.Models.Users.NickName">
+            <summary>
+            昵称
+            </summary>
+        </member>
         <member name="P:DR.Models.Users.Email">
             <summary>
             邮箱
@@ -157,9 +206,19 @@
             用户名
             </summary>
         </member>
+        <member name="P:DR.Models.Users.ComPany">
+            <summary>
+            公司名称
+            </summary>
+        </member>
         <member name="P:DR.Models.Users.PassWord">
              <summary>
             密码
+             </summary>
+        </member>
+        <member name="P:DR.Models.Users.Count">
+             <summary>
+            注册次数
              </summary>
         </member>
         <member name="P:DR.Models.Users.LoginType">
@@ -177,14 +236,14 @@
             上传文章详情表
             </summary>
         </member>
-        <member name="P:DR.Models.WordInfo.Users">
+        <member name="P:DR.Models.WordInfo.PictureInfos">
             <summary>
             用户表，做联级查询
             </summary>
         </member>
-        <member name="P:DR.Models.WordInfo.UserID">
+        <member name="P:DR.Models.WordInfo.PictureID">
             <summary>
-            管理员ID
+            图片ID
             </summary>
         </member>
         <member name="P:DR.Models.WordInfo.HtmlContent">
@@ -200,11 +259,6 @@
         <member name="P:DR.Models.WordInfo.HtmlExplain">
             <summary>
             文章说明
-            </summary>
-        </member>
-        <member name="P:DR.Models.WordInfo.ArticleType">
-            <summary>
-            文章类型
             </summary>
         </member>
         <member name="T:DR.Models.ModelBase">
@@ -240,6 +294,16 @@
         <member name="P:DR.Models.RegisterDto.Email">
             <summary>
             邮箱
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterDto.ComPany">
+            <summary>
+            公司名称
+            </summary>
+        </member>
+        <member name="P:DR.Models.RegisterDto.NickName">
+            <summary>
+            昵称
             </summary>
         </member>
         <member name="T:DR.Models.RegisterFreeDto">
@@ -362,6 +426,11 @@
             文件上传
             </summary>
         </member>
+        <member name="P:DR.Models.WordDto.Eid">
+            <summary>
+            Eid
+            </summary>
+        </member>
         <member name="P:DR.Models.WordDto.id">
             <summary>
             ID
@@ -442,9 +511,9 @@
             文章html内容
             </summary>
         </member>
-        <member name="P:DR.Models.WordListDto.ArticleType">
+        <member name="P:DR.Models.WordListDto.PictureTitle">
             <summary>
-            文章类型
+            资讯标题
             </summary>
         </member>
         <member name="P:DR.Models.WordListDto.CreateTime">
@@ -512,9 +581,24 @@
             推荐指数
             </summary>
         </member>
+        <member name="P:DR.Models.PictureDto.PictureType">
+            <summary>
+            图片分类
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureDto.PhotoType">
+            <summary>
+            产品图片分类
+            </summary>
+        </member>
         <member name="T:DR.Models.PictureSelectDto">
             <summary>
             图片查询
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureSelectDto.PictureType">
+            <summary>
+            开始时间
             </summary>
         </member>
         <member name="P:DR.Models.PictureSelectDto.StartTime">
@@ -533,6 +617,26 @@
             </summary>
         </member>
         <member name="P:DR.Models.PictureSelectDto.pageSize">
+            <summary>
+            页数
+            </summary>
+        </member>
+        <member name="T:DR.Models.PicturePcDto">
+            <summary>
+            图片查询
+            </summary>
+        </member>
+        <member name="P:DR.Models.PicturePcDto.PictureType">
+            <summary>
+            开始时间
+            </summary>
+        </member>
+        <member name="P:DR.Models.PicturePcDto.pageNum">
+            <summary>
+            条数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PicturePcDto.pageSize">
             <summary>
             页数
             </summary>
@@ -577,6 +681,11 @@
             推荐指数
             </summary>
         </member>
+        <member name="P:DR.Models.PictureListDto.PictureType">
+            <summary>
+            图片类型
+            </summary>
+        </member>
         <member name="T:DR.Models.PictureLessDto">
             <summary>
             图片详情
@@ -610,6 +719,36 @@
         <member name="P:DR.Models.PictureLessDto.Index">
             <summary>
             推荐指数
+            </summary>
+        </member>
+        <member name="P:DR.Models.PictureLessDto.PictureType">
+            <summary>
+            图片类型
+            </summary>
+        </member>
+        <member name="T:DR.Models.WordInfoDto">
+            <summary>
+            文档详情
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfoDto.HtmlContent">
+            <summary>
+            文章html内容
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfoDto.CreateTime">
+             <summary>
+            创建时间
+             </summary>
+        </member>
+        <member name="P:DR.Models.WordInfoDto.HtmlTitle">
+            <summary>
+            文章标题
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfoDto.HtmlExplain">
+            <summary>
+            文章说明
             </summary>
         </member>
         <member name="T:DR.Models.AuthRole">
@@ -672,9 +811,34 @@
             五星
              </summary>
         </member>
-        <member name="T:DR.Models.ArticleType">
+        <member name="T:DR.Models.PictureType">
             <summary>
-            文章类型，暂保留
+            图片分类
+            </summary>
+        </member>
+        <member name="F:DR.Models.PictureType.Product">
+            <summary>
+            产品
+            </summary>
+        </member>
+        <member name="F:DR.Models.PictureType.News">
+            <summary>
+            资讯
+            </summary>
+        </member>
+        <member name="T:DR.Models.PhotoType">
+            <summary>
+            产品图片类型
+            </summary>
+        </member>
+        <member name="F:DR.Models.PhotoType.YOUTH">
+            <summary>
+            青年
+            </summary>
+        </member>
+        <member name="F:DR.Models.PhotoType.ELEGANT">
+            <summary>
+            优雅的
             </summary>
         </member>
         <member name="T:DR.Models.CodeAndMessage">
@@ -707,7 +871,7 @@
             Token失效
             </summary>
         </member>
-        <member name="F:DR.Models.CodeAndMessage.用户名或密码错误">
+        <member name="F:DR.Models.CodeAndMessage.用户名不存在">
             <summary>
             账号密码错误
             </summary>
@@ -727,6 +891,16 @@
             重复
             </summary>
         </member>
+        <member name="F:DR.Models.CodeAndMessage.密码错误">
+            <summary>
+            账号密码错误
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.重复邮箱在俩小时内注册">
+            <summary>
+            重复账号在俩小时内注册
+            </summary>
+        </member>
         <member name="F:DR.Models.CodeAndMessage.修改失败">
             <summary>
             修改失败
@@ -735,6 +909,11 @@
         <member name="F:DR.Models.CodeAndMessage.新增失败">
             <summary>
             新增失败
+            </summary>
+        </member>
+        <member name="F:DR.Models.CodeAndMessage.已存在对应的资讯文档">
+            <summary>
+            已存在word文档，只能修改
             </summary>
         </member>
         <member name="T:DR.Models.RequestLogs">

@@ -51,40 +51,37 @@ namespace DR.WebApi.Controllers
         {
 
             string token = _httpContext.HttpContext.Request.Headers["Authorization"];
-
-            if (AuthRedis.GetUserByToken(token, out UserInfo userInfo))
+            AuthRedis.GetUserByToken(token, out UserInfo userInfo);
+            using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
+            if (body.Eid == null)
             {
-                using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
-                if (body.id != null)
+                int count = context.WordInfo.Where(x => x.PictureID == body.id).Count();
+                if (count > 0)
+                    return Ok(new ApiResponse(code: CodeAndMessage.已存在对应的资讯文档));
+                WordInfo WordInfos = new WordInfo()
                 {
-                    var wordList = context.WordInfo.Where(x => x.Disable == false && x.Id == body.id).ToList();
-                    foreach (var item in wordList)
-                    {
-                        item.HtmlContent = body.HtmlContent;
-                        item.LastModifiedTime = DateTime.Now;
-                        item.HtmlExplain = body.HtmlExplain;
-                        item.HtmlTitle = body.HtmlTitle;
-                    }
-                    context.SaveChanges();
-                    WordRedis.Del();
-                }
-                else
-                {
-                    WordInfo WordInfos = new WordInfo()
-                    {
-                        Id = SequenceID.GetSequenceID(),
-                        CreateTime = DateTime.Now,
-                        Disable = false,
-                        HtmlContent = body.HtmlContent,
-                        UserID = userInfo.id,
-                        LastModifiedTime = DateTime.Now,
-                        HtmlExplain = body.HtmlExplain,
-                        HtmlTitle = body.HtmlTitle
-                    };
-                    context.Add(WordInfos);
-                    context.SaveChanges();
-                    WordRedis.Del();
-                }
+                    Id = SequenceID.GetSequenceID(),
+                    CreateTime = DateTime.Now,
+                    Disable = false,
+                    HtmlContent = body.HtmlContent,
+                    PictureID = body.id,
+                    LastModifiedTime = DateTime.Now,
+                    HtmlExplain = body.HtmlExplain,
+                    HtmlTitle = body.HtmlTitle
+                };
+                context.Add(WordInfos);
+                context.SaveChanges();
+                WordRedis.Del();
+            }
+            else
+            {
+                var WordInfo = context.WordInfo.Single(x => x.Id == body.Eid);
+                WordInfo.LastModifiedTime = DateTime.Now;
+                WordInfo.HtmlContent = body.HtmlContent;
+                WordInfo.HtmlExplain = body.HtmlExplain;
+                WordInfo.HtmlTitle = body.HtmlTitle;
+                context.SaveChanges();
+                WordRedis.Del();
             }
             return Ok(new ApiResponse());
 
@@ -104,7 +101,7 @@ namespace DR.WebApi.Controllers
             if (!WordRedis.GetAll(out List<WordInfo> Word))
             {
                 using EFCoreContextWrite context = new EFCore.EFCoreContextWrite();
-                Word = context.WordInfo.Where(x => x.Disable == false).Include(x => x.Users).ToList();
+                Word = context.WordInfo.Where(x => x.Disable == false).Include(x => x.PictureInfos).Include(x => x.PictureInfos.Users).ToList();
                 total = Word.Count();
                 if (Word != null && Word.Count > 0)
                     WordRedis.SaveAll(Word);
@@ -126,10 +123,10 @@ namespace DR.WebApi.Controllers
                         ID = item.Id,
                         CreateTime = item.CreateTime,
                         HtmlContent = item.HtmlContent,
-                        UserName = item.Users.UserName,
-                        ArticleType = item.ArticleType,
                         HtmlExplain = item.HtmlExplain,
-                        HtmlTitle = item.HtmlTitle
+                        UserName = item.PictureInfos.Users.UserName,
+                        HtmlTitle = item.HtmlTitle,
+                        PictureTitle = item.PictureInfos.PictureTitle
                     };
                     wordListDtos.Add(WordInfos);
                 }
@@ -147,10 +144,10 @@ namespace DR.WebApi.Controllers
                         ID = item.Id,
                         CreateTime = item.CreateTime,
                         HtmlContent = item.HtmlContent,
-                        UserName = item.Users.UserName,
-                        ArticleType = item.ArticleType,
                         HtmlExplain = item.HtmlExplain,
-                        HtmlTitle = item.HtmlTitle
+                        UserName = item.PictureInfos.Users.UserName,
+                        HtmlTitle = item.HtmlTitle,
+                        PictureTitle = item.PictureInfos.PictureTitle
                     };
                     wordListDtos.Add(WordInfos);
                 }

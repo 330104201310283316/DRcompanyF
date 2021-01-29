@@ -14,13 +14,13 @@ namespace DR.Models
         /// <summary>
         /// 用户表，做联级查询
         /// </summary>
-        [ForeignKey("UserID")]
+        [ForeignKey("PictureID")]
         [Required]
-        public Users Users { get; set; }
+        public PictureInfo PictureInfos { get; set; }
         /// <summary>
-        /// 管理员ID
+        /// 图片ID
         /// </summary>
-        public long UserID { get; set; }
+        public long? PictureID { get; set; }
         /// <summary>
         /// 文章html内容
         /// </summary>
@@ -36,9 +36,5 @@ namespace DR.Models
         /// </summary>
         [Required]
         public string HtmlExplain { get; set; }
-        /// <summary>
-        /// 文章类型
-        /// </summary>
-        public ArticleType ArticleType { get; set; }
     }
 }

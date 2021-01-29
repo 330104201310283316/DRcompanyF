@@ -15,6 +15,14 @@ namespace DR.Models
         /// </summary>
         [RegularExpression(@"^[A-Za-z0-9\u4e00-\u9fa5]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)+$", ErrorMessage = "请输入正确的邮箱")]
         public string Email { get; set; }
+        /// <summary>
+        /// 公司名称
+        /// </summary>
+        public string ComPany { get; set; }
+        /// <summary>
+        /// 昵称
+        /// </summary>
+        public string NickName { get; set; }
     }
 
     /// <summary>

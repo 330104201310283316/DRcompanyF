@@ -26,7 +26,7 @@ namespace DR.Services
 
             Message.To.Add(Email);//将邮件发送给QQ邮箱
             Message.Subject = "注册账号密码";
-            Message.Body = "account number:" + UserName + ",password：" + PassWord + "";
+            Message.Body = "account number:" + Email + ",password：" + PassWord + "";
             Message.SubjectEncoding = System.Text.Encoding.UTF8;
             Message.BodyEncoding = System.Text.Encoding.UTF8;
             Message.Priority = System.Net.Mail.MailPriority.High;

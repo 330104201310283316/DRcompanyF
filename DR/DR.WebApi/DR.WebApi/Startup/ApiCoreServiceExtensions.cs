@@ -4,7 +4,6 @@ using System.Linq;
 using System.Threading.Tasks;
 using DR.MongoDB;
 using DR.Services;
-using DR.Services.Services;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DR.WebApi

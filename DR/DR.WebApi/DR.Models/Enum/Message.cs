@@ -36,7 +36,7 @@ namespace DR.Models
         /// <summary>
         /// 账号密码错误
         /// </summary>
-        用户名或密码错误 = 4002,
+        用户名不存在 = 4002,
         /// <summary>
         /// 超时
         /// </summary>
@@ -49,6 +49,15 @@ namespace DR.Models
         /// 重复
         /// </summary>
         用户名重复 = 4005,
+      
+        /// <summary>
+        /// 账号密码错误
+        /// </summary>
+        密码错误 = 4006,
+        /// <summary>
+        /// 重复账号在俩小时内注册
+        /// </summary>
+        重复邮箱在俩小时内注册 = 4007,
         #endregion
 
         /// <summary>
@@ -59,5 +68,9 @@ namespace DR.Models
         /// 新增失败
         /// </summary>
         新增失败 = 5002,
+        /// <summary>
+        /// 已存在word文档，只能修改
+        /// </summary>
+        已存在对应的资讯文档 = 6001,
     }
 }

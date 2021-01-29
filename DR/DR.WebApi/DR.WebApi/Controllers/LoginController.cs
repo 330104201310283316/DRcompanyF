@@ -63,21 +63,43 @@ namespace DR.WebApi.Controllers
         [Route("Register")]
         public IActionResult Register(RegisterDto body)
         {
-            Users users = new Users()
+            var userList = _BaseService.GetListWriteBy<Users>(x => x.Email == body.Email);
+            int count = userList.Where(x => x.CreateTime.AddHours(2) > DateTime.Now).Count();
+            if (count > 0)
             {
-                Id = SequenceID.GetSequenceID(),
-                AuthRole = AuthRole.User,
-                CreateTime = DateTime.Now,
-                Disable = false,
-                Email = body.Email,
-                LastModifiedTime = DateTime.Now,
-                LoginType = LoginType.LimitWeb,
-                UserName = SequenceID.GetSequenceID().ToString(),
-                PassWord = HashPass.HashString("123456", "MD5")
-            };
-            _BaseService.Add(users);
-            _SendService.SendEmail(body.Email, users.UserName, "123456");
-            return Ok(new ApiResponse(code: CodeAndMessage.注册成功));
+                return Ok(new ApiNResponse(code: CodeAndMessage.重复邮箱在俩小时内注册, message: "Repeat email to register within two hours"));
+            }
+            int userinfo = userList.Where(x => x.Email == body.Email && x.CreateTime.AddHours(2) < DateTime.Now).Count();
+            if (userinfo > 0)
+            {
+                var userlist = userList.Single(x => x.Email == body.Email);
+
+                userlist.CreateTime = DateTime.Now;
+                userlist.Count = userlist.Count + 1;
+                _BaseService.ModifyNo(userlist);
+                _SendService.SendEmail(body.Email, body.Email, "123456");
+            }
+            else
+            {
+                Users users = new Users()
+                {
+                    Id = SequenceID.GetSequenceID(),
+                    AuthRole = AuthRole.User,
+                    CreateTime = DateTime.Now,
+                    Disable = false,
+                    Email = body.Email,
+                    LastModifiedTime = DateTime.Now,
+                    LoginType = LoginType.LimitWeb,
+                    UserName = body.Email.ToString(),
+                    ComPany = body.ComPany,
+                    NickName = body.NickName,
+                    Count = 1,
+                    PassWord = HashPass.HashString("123456", "MD5")
+                };
+                _BaseService.Add(users);
+                _SendService.SendEmail(body.Email, users.UserName, "123456");
+            }
+            return Ok(new ApiResponse());
 
         }
 
@@ -107,7 +129,7 @@ namespace DR.WebApi.Controllers
                 PassWord = HashPass.HashString(body.PassWord, "MD5"),
             };
             _BaseService.Add(users);
-            return Ok(new ApiResponse(code: CodeAndMessage.注册成功));
+            return Ok(new ApiResponse());
 
         }
         /// <summary>
@@ -133,44 +155,46 @@ namespace DR.WebApi.Controllers
         [Route("AuthLogin")]
         public IActionResult AuthLogin(LoginDto body)
         {
-            var User = _BaseService.GetListWriteBy<Users>(x => x.UserName == body.UserName && x.PassWord == HashPass.HashString(body.PassWord, "MD5"));
-            int Usercount = User.Count();
-            if (Usercount > 0)
-            {
-                UserInfo userInfo = new UserInfo();
-                foreach (var item in User)
-                {
-                    userInfo = new UserInfo()
-                    {
-                        id = item.Id,
-                        AuthRole = new List<AuthRole>() { item.AuthRole },
-                        Email = item.Email,
-                        LoginType = new List<LoginType>() { item.LoginType },
-                        CreateTime = item.CreateTime
-                    };
-                }
-                string token = Guid.NewGuid().ToString();
-                AuthRole AuthRole = userInfo.AuthRole.First();
-                switch (AuthRole)
-                {
-                    case Models.AuthRole.Admin:
-                        AuthRedis.GetUserById(userInfo.id);
-                        AuthRedis.SetToken(userInfo, token, LoginType.FreeWeb);
-                        break;
-                    case Models.AuthRole.User:
-                        AuthRedis.GetUserById(userInfo.id);
-                        AuthRedis.SetToken(userInfo, token, LoginType.LimitWeb);
-                        break;
-                    default:
-                        break;
-                }
-                return Ok(new ApiResponse(new { token, AuthRole }));
-            }
-            else
-            {
-                return Ok(new ApiResponse(code: CodeAndMessage.用户名或密码错误));
-            }
+            var User = _BaseService.GetListWriteBy<Users>(x => x.UserName == body.UserName);
 
+            if (User.Count <= 0)
+            {
+                return Ok(new ApiNResponse(code: CodeAndMessage.用户名不存在, message: "The user name does not exist"));
+            }
+            if (User.Where(x => x.UserName == body.UserName && x.PassWord == HashPass.HashString(body.PassWord, "MD5")).Count() <= 0)
+                return Ok(new ApiNResponse(code: CodeAndMessage.密码错误, message: "Password error"));
+
+            if (User.Where(x => x.UserName == body.UserName && x.PassWord == HashPass.HashString(body.PassWord, "MD5") && x.CreateTime.AddHours(2) < DateTime.Now && x.LoginType == LoginType.LimitWeb).Count() > 0)
+                return Ok(new ApiNResponse(code: CodeAndMessage.注册时间已经超过2小时, message: "The registration time has exceeded 2 hours. Please re-register"));
+
+            UserInfo userInfo = new UserInfo();
+            foreach (var item in User)
+            {
+                userInfo = new UserInfo()
+                {
+                    id = item.Id,
+                    AuthRole = new List<AuthRole>() { item.AuthRole },
+                    Email = item.Email,
+                    LoginType = new List<LoginType>() { item.LoginType },
+                    CreateTime = item.CreateTime
+                };
+            }
+            string token = Guid.NewGuid().ToString();
+            AuthRole AuthRoles = userInfo.AuthRole.First();
+            switch (AuthRoles)
+            {
+                case Models.AuthRole.Admin:
+                    AuthRedis.GetUserById(userInfo.id, LoginType.FreeWeb);
+                    AuthRedis.SetToken(userInfo, token, LoginType.FreeWeb);
+                    break;
+                case Models.AuthRole.User:
+                    AuthRedis.GetUserById(userInfo.id, LoginType.LimitWeb);
+                    AuthRedis.SetToken(userInfo, token, LoginType.LimitWeb);
+                    break;
+                default:
+                    break;
+            }
+            return Ok(new ApiResponse(new { token, AuthRoles }));
 
         }
         /// <summary>
@@ -224,7 +248,7 @@ namespace DR.WebApi.Controllers
             Dictionary<string, string> dicColumns = new Dictionary<string, string>();
             dicColumns.Add("Email", "邮箱");
             dicColumns.Add("UserName", "用户名");
-            dicColumns.Add("LoginType", "临时");
+            dicColumns.Add("LoginType", "用户类型");
             dicColumns.Add("CreateTime", "创建时间");
             var user = _BaseService.GetListWriteBy<Users>(x => x.Disable == false && x.AuthRole == AuthRole.User).ToList();
             byte[] buffer = _excelService.ExportExcel(user, title, sheetName, dicColumns);

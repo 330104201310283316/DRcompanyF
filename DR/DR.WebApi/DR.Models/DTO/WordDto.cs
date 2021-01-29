@@ -11,6 +11,10 @@ namespace DR.Models
     public class WordDto
     {
         /// <summary>
+        /// Eid
+        /// </summary>
+        public long? Eid { get; set; }
+        /// <summary>
         /// ID
         /// </summary>
         public long? id { get; set; }
@@ -87,9 +91,9 @@ namespace DR.Models
         /// </summary>
         public string HtmlContent { get; set; }
         /// <summary>
-        /// 文章类型
+        /// 资讯标题
         /// </summary>
-        public ArticleType ArticleType { get; set; }
+        public string PictureTitle { get; set; }
         /// <summary>
         ///创建时间
         /// </summary>
@@ -108,7 +112,7 @@ namespace DR.Models
     /// </summary>
     public class WordLessDto
     {
-       
+
         /// <summary>
         /// 文章html内容
         /// </summary>
@@ -147,13 +151,24 @@ namespace DR.Models
         /// 推荐指数
         /// </summary>
         public RecommendIndex Index { get; set; }
-       
+        /// <summary>
+        /// 图片分类
+        /// </summary>
+        public PictureType PictureType { get; set; }
+        /// <summary>
+        /// 产品图片分类
+        /// </summary>
+        public PhotoType PhotoType { get; set; }
     }
     /// <summary>
     /// 图片查询
     /// </summary>
     public class PictureSelectDto
     {
+        /// <summary>
+        /// 开始时间
+        /// </summary>
+        public PictureType? PictureType { get; set; }
         /// <summary>
         /// 开始时间
         /// </summary>
@@ -174,6 +189,24 @@ namespace DR.Models
         /// </summary>
         [Range(0, int.MaxValue, ErrorMessage = "pageSize必须是大于0的整数")]
         public int pageSize { get; set; }
+    }
+    /// <summary>
+    /// 图片查询
+    /// </summary>
+    public class PicturePcDto
+    {
+        /// <summary>
+        /// 开始时间
+        /// </summary>
+        public PictureType? PictureType { get; set; }
+        /// <summary>
+        /// 条数
+        /// </summary>
+        public int pageNum { get; set; } = 4;
+        /// <summary>
+        /// 页数
+        /// </summary>
+        public int pageSize { get; set; } = 1;
     }
     /// <summary>
     /// 图片上传
@@ -208,6 +241,11 @@ namespace DR.Models
         /// 推荐指数
         /// </summary>
         public RecommendIndex Index { get; set; }
+        /// <summary>
+        /// 图片类型
+        /// </summary>
+        public PictureType PictureType { get; set; }
+
     }
     /// <summary>
     /// 图片详情
@@ -238,7 +276,33 @@ namespace DR.Models
         /// 推荐指数
         /// </summary>
         public RecommendIndex Index { get; set; }
+        /// <summary>
+        /// 图片类型
+        /// </summary>
+        public PictureType PictureType { get; set; }
     }
+    /// <summary>
+    /// 文档详情
+    /// </summary>
+    public class WordInfoDto
+    {
 
+        /// <summary>
+        /// 文章html内容
+        /// </summary>
+        public string HtmlContent { get; set; }
+        /// <summary>
+        ///创建时间
+        /// </summary>
+        public DateTime CreateTime { get; set; }
+        /// <summary>
+        /// 文章标题
+        /// </summary>
+        public string HtmlTitle { get; set; }
+        /// <summary>
+        /// 文章说明
+        /// </summary>
+        public string HtmlExplain { get; set; }
+    }
 
 }

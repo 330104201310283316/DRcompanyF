@@ -26,13 +26,15 @@
             用户API
             </summary>
         </member>
-        <member name="M:DR.WebApi.Controllers.LoginController.#ctor(DR.Services.ITestService,Microsoft.AspNetCore.Http.IHttpContextAccessor,DR.Services.ISendService)">
+        <member name="M:DR.WebApi.Controllers.LoginController.#ctor(DR.Services.ITestService,Microsoft.AspNetCore.Http.IHttpContextAccessor,DR.Services.ISendService,DR.Services.IEFBaseService,DR.Services.IExcelService)">
             <summary>
             注入
             </summary>
             <param name="TestService"></param>
             <param name="httpContext"></param>
             <param name="sendService"></param>
+            <param name="BaseService"></param>
+            <param name="excelService"></param>
         </member>
         <member name="M:DR.WebApi.Controllers.LoginController.Register(DR.Models.RegisterDto)">
             <summary>
@@ -102,9 +104,28 @@
             <param name="body"></param>
             <returns></returns>
         </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureList">
+            <summary>
+            前端图片列表
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PhotoList(DR.Models.PhotoType)">
+            <summary>
+            产品图片类型(YOUTH/ELEGANT)
+            </summary>
+            <returns></returns>
+        </member>
         <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureDetails(System.Int64)">
             <summary>
             查看详情
+            </summary>
+            <param name="ID"></param>
+            <returns></returns>
+        </member>
+        <member name="M:DR.WebApi.Controllers.PictureUpLoadController.PictureInfo(System.Int64)">
+            <summary>
+            查看图片资讯文章详情
             </summary>
             <param name="ID"></param>
             <returns></returns>

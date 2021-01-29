@@ -42,5 +42,15 @@ namespace DR.Models
         /// </summary>
         [Required]
         public RecommendIndex RecommendIndex { get; set; }
+        /// <summary>
+        ///图片分类
+        /// </summary>
+        [Required]
+        public PictureType PictureType { get; set; }
+        /// <summary>
+        ///产品图片类型
+        /// </summary>
+        [Required]
+        public PhotoType PhotoType { get; set; }
     }
 }

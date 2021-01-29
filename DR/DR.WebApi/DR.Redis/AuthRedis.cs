@@ -23,11 +23,11 @@ namespace DR.Redis
             return true;
         }
 
-        public static void GetUserById(long id)
+        public static void GetUserById(long id, LoginType loginType)
         {
             string token = RedisHelper.Get<string>($"UserInfo_{id}");
             if (!string.IsNullOrEmpty(token))
-                Del(LoginType.LimitWeb, token, id);
+                Del(loginType, token, id);
         }
 
         public static bool GetUserByToken(string token, out UserInfo userInfo)

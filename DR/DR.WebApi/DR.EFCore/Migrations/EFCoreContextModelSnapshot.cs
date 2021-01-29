@@ -15,9 +15,9 @@ namespace DR.EFCore.DbMigrations.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "3.1.7")
+                .UseIdentityColumns()
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
-                .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+                .HasAnnotation("ProductVersion", "5.0.2");
 
             modelBuilder.Entity("DR.Models.PictureInfo", b =>
                 {
@@ -33,6 +33,9 @@ namespace DR.EFCore.DbMigrations.Migrations
                     b.Property<DateTime>("LastModifiedTime")
                         .HasColumnType("datetime2");
 
+                    b.Property<int>("PhotoType")
+                        .HasColumnType("int");
+
                     b.Property<string>("PictureContent")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -44,6 +47,9 @@ namespace DR.EFCore.DbMigrations.Migrations
                     b.Property<string>("PictureTitle")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("PictureType")
+                        .HasColumnType("int");
 
                     b.Property<int>("RecommendIndex")
                         .HasColumnType("int");
@@ -65,8 +71,8 @@ namespace DR.EFCore.DbMigrations.Migrations
 
                     b.Property<string>("ConfigKey")
                         .IsRequired()
-                        .HasColumnType("nvarchar(50)")
-                        .HasMaxLength(50);
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<string>("ConfigValues")
                         .IsRequired()
@@ -119,6 +125,13 @@ namespace DR.EFCore.DbMigrations.Migrations
                     b.Property<int>("AuthRole")
                         .HasColumnType("int");
 
+                    b.Property<string>("ComPany")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Count")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
 
@@ -126,6 +139,7 @@ namespace DR.EFCore.DbMigrations.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("Email")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("LastModifiedTime")
@@ -134,10 +148,14 @@ namespace DR.EFCore.DbMigrations.Migrations
                     b.Property<int>("LoginType")
                         .HasColumnType("int");
 
+                    b.Property<string>("NickName")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("PassWord")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("UserName")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -149,9 +167,6 @@ namespace DR.EFCore.DbMigrations.Migrations
                 {
                     b.Property<long>("Id")
                         .HasColumnType("bigint");
-
-                    b.Property<int>("ArticleType")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("CreateTime")
                         .HasColumnType("datetime2");
@@ -174,12 +189,13 @@ namespace DR.EFCore.DbMigrations.Migrations
                     b.Property<DateTime>("LastModifiedTime")
                         .HasColumnType("datetime2");
 
-                    b.Property<long>("UserID")
+                    b.Property<long?>("PictureID")
+                        .IsRequired()
                         .HasColumnType("bigint");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserID");
+                    b.HasIndex("PictureID");
 
                     b.ToTable("WordInfo");
                 });
@@ -191,15 +207,19 @@ namespace DR.EFCore.DbMigrations.Migrations
                         .HasForeignKey("UserID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("Users");
                 });
 
             modelBuilder.Entity("DR.Models.WordInfo", b =>
                 {
-                    b.HasOne("DR.Models.Users", "Users")
+                    b.HasOne("DR.Models.PictureInfo", "PictureInfos")
                         .WithMany()
-                        .HasForeignKey("UserID")
+                        .HasForeignKey("PictureID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+
+                    b.Navigation("PictureInfos");
                 });
 #pragma warning restore 612, 618
         }

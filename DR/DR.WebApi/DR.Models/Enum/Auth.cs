@@ -60,10 +60,36 @@ namespace DR.Models
         Five = 5,
 
     }
+
     /// <summary>
-    /// 文章类型，暂保留
+    /// 图片分类
     /// </summary>
-    public enum ArticleType
+    public enum PictureType
     {
+        /// <summary>
+        /// 产品
+        /// </summary>
+        Product=0,
+        /// <summary>
+        /// 资讯
+        /// </summary>
+        News = 1,
+    }
+
+
+
+    /// <summary>
+    /// 产品图片类型
+    /// </summary>
+    public enum PhotoType
+    {
+        /// <summary>
+        /// 青年
+        /// </summary>
+        YOUTH = 0,
+        /// <summary>
+        /// 优雅的
+        /// </summary>
+        ELEGANT = 1,
     }
 }
