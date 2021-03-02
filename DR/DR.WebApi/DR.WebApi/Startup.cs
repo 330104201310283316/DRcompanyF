@@ -110,7 +110,7 @@ namespace DR.WebApi
             //使用hangfire只能本地访问
             //app.UseHangfireDashboard();
             //控制仪表盘的访问路径和授权配置
-            app.UseHangfireDashboard("/hangfire", new Hangfire.DashboardOptions
+            app.UseHangfireDashboard("/hangfire", new DashboardOptions
             {
                 Authorization = new[] { new MyDashboardAuthorizationFilter() }
             });

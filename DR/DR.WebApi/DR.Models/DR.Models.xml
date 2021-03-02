@@ -143,7 +143,7 @@
         </member>
         <member name="P:DR.Models.PictureInfo.RecommendIndex">
              <summary>
-            推荐指数
+            推荐指数(值越大，越在前面展示)
              </summary>
         </member>
         <member name="P:DR.Models.PictureInfo.PictureType">
@@ -259,6 +259,11 @@
         <member name="P:DR.Models.WordInfo.HtmlExplain">
             <summary>
             文章说明
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordInfo.AttachedPath">
+            <summary>
+            附加文件只能上传pdf
             </summary>
         </member>
         <member name="T:DR.Models.ModelBase">
@@ -421,6 +426,11 @@
             testname
             </summary>
         </member>
+        <member name="T:DR.Models.TimeDto">
+            <summary>
+            时间
+            </summary>
+        </member>
         <member name="T:DR.Models.WordDto">
             <summary>
             文件上传
@@ -449,6 +459,11 @@
         <member name="P:DR.Models.WordDto.HtmlContent">
             <summary>
             文本内容
+            </summary>
+        </member>
+        <member name="P:DR.Models.WordDto.AttachedPath">
+            <summary>
+            附加文件路径
             </summary>
         </member>
         <member name="T:DR.Models.WordUpdateDto">
@@ -751,6 +766,11 @@
             文章说明
             </summary>
         </member>
+        <member name="P:DR.Models.WordInfoDto.AttachedPath">
+            <summary>
+            附加文件路径
+            </summary>
+        </member>
         <member name="T:DR.Models.AuthRole">
             <summary>
             Role
@@ -780,36 +800,6 @@
             <summary>
             不限制账号
             </summary>
-        </member>
-        <member name="T:DR.Models.RecommendIndex">
-            <summary>
-            推荐指数
-            </summary>
-        </member>
-        <member name="F:DR.Models.RecommendIndex.one">
-             <summary>
-            一星
-             </summary>
-        </member>
-        <member name="F:DR.Models.RecommendIndex.Two">
-            <summary>
-            二星
-            </summary>
-        </member>
-        <member name="F:DR.Models.RecommendIndex.Three">
-            <summary>
-            三星
-            </summary>
-        </member>
-        <member name="F:DR.Models.RecommendIndex.Four">
-            <summary>
-            四星
-            </summary>
-        </member>
-        <member name="F:DR.Models.RecommendIndex.Five">
-             <summary>
-            五星
-             </summary>
         </member>
         <member name="T:DR.Models.PictureType">
             <summary>

@@ -17,4 +17,12 @@ namespace DR.Models
         [StringLength(50, ErrorMessage = "长度限制0-50")]
         public string TestName { get; set; }
     }
+    /// <summary>
+    /// 时间
+    /// </summary>
+    public class TimeDto
+    {
+        public int DateTime { get; set; }
+        public int Count { get; set; }
+    }
 }

@@ -30,6 +30,11 @@ namespace DR.Models
         /// 文本内容
         /// </summary>
         public string HtmlContent { get; set; }
+
+        /// <summary>
+        /// 附加文件路径
+        /// </summary>
+        public string AttachedPath { get; set; }
     }
     /// <summary>
     /// word修改
@@ -150,7 +155,7 @@ namespace DR.Models
         /// <summary>
         /// 推荐指数
         /// </summary>
-        public RecommendIndex Index { get; set; }
+        public int Index { get; set; }
         /// <summary>
         /// 图片分类
         /// </summary>
@@ -240,7 +245,7 @@ namespace DR.Models
         /// <summary>
         /// 推荐指数
         /// </summary>
-        public RecommendIndex Index { get; set; }
+        public int Index { get; set; }
         /// <summary>
         /// 图片类型
         /// </summary>
@@ -275,7 +280,7 @@ namespace DR.Models
         /// <summary>
         /// 推荐指数
         /// </summary>
-        public RecommendIndex Index { get; set; }
+        public int Index { get; set; }
         /// <summary>
         /// 图片类型
         /// </summary>
@@ -303,6 +308,10 @@ namespace DR.Models
         /// 文章说明
         /// </summary>
         public string HtmlExplain { get; set; }
+        /// <summary>
+        /// 附加文件路径
+        /// </summary>
+        public string AttachedPath { get; set; }
     }
 
 }

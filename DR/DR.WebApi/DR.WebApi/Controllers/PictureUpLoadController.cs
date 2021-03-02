@@ -104,7 +104,7 @@ namespace DR.WebApi.Controllers
                     Picture = Picture.Where(x => x.PictureType == body.PictureType).ToList();
                 }
 
-                Picture = Picture.OrderByDescending(x => x.CreateTime).Skip(body.pageSize * (body.pageNum - 1)).Take(body.pageSize).ToList();
+                Picture = Picture.OrderByDescending(x => x.RecommendIndex).Skip(body.pageSize * (body.pageNum - 1)).Take(body.pageSize).ToList();
 
                 foreach (var item in Picture)
                 {
@@ -139,7 +139,7 @@ namespace DR.WebApi.Controllers
                     Picture = Picture.Where(x => x.PictureType == body.PictureType).ToList();
                 }
 
-                Picture = Picture.OrderByDescending(x => x.CreateTime).Skip(body.pageSize * (body.pageNum - 1)).Take(body.pageSize).ToList();
+                Picture = Picture.OrderByDescending(x => x.RecommendIndex).Skip(body.pageSize * (body.pageNum - 1)).Take(body.pageSize).ToList();
 
                 foreach (var item in Picture)
                 {
@@ -174,26 +174,26 @@ namespace DR.WebApi.Controllers
             List<PictureListDto> PictureListDtos = new List<PictureListDto>();
             if (!PictureRedis.GetAll(out List<PictureInfo> Picture))
             {
-                Picture = context.PictureInfo.Where(x => x.Disable == false).Include(x => x.Users).ToList();
+                Picture = context.PictureInfo.Where(x => x.Disable == false).OrderByDescending(x => x.RecommendIndex).Include(x => x.Users).ToList();
                 total = Picture.Count();
                 if (Picture != null && Picture.Count > 0)
                     PictureRedis.SaveAll(Picture);
                 string token = _httpContext.HttpContext.Request.Headers["Authorization"];
                 if (string.IsNullOrEmpty(token))
                 {
-                    Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                    Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                 }
                 else
                 {
                     if (!AuthRedis.GetUserByToken(token, out UserInfo userInfo))
                     {
-                        Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                        Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                     }
                     else
                     {
                         //注册账号时间不能超过俩个小时
                         if (DateTime.Now.Hour - userInfo.CreateTime.Hour > 2 && userInfo.LoginType.First() != LoginType.FreeWeb)
-                            Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                            Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                     }
                     Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.News).ToList();
                 }
@@ -222,21 +222,21 @@ namespace DR.WebApi.Controllers
                 if (string.IsNullOrEmpty(token))
                 {
 
-                    Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                    Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                 }
                 else
                 {
                     if (!AuthRedis.GetUserByToken(token, out UserInfo userInfo))
                     {
-                        Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                        Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                     }
                     else
                     {
                         //注册账号时间不能超过俩个小时
                         if (DateTime.Now.Hour - userInfo.CreateTime.Hour > 2 && userInfo.LoginType.First() != LoginType.FreeWeb)
-                            Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderBy(x => x.CreateTime).Skip(0).Take(4).ToList();
+                            Picture = Picture.Where(x => x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).Skip(0).Take(4).ToList();
                     }
-                    Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.News).ToList();
+                    Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.News).OrderByDescending(x => x.RecommendIndex).ToList();
                 }
                 foreach (var item in Picture)
                 {
@@ -277,7 +277,7 @@ namespace DR.WebApi.Controllers
                 total = Picture.Count();
                 if (Picture != null && Picture.Count > 0)
                     PictureRedis.SaveAll(Picture);
-                Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.Product && x.PhotoType == photoType).ToList();
+                Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.Product && x.PhotoType == photoType).OrderByDescending(x => x.RecommendIndex).ToList();
 
                 foreach (var item in Picture)
                 {
@@ -299,7 +299,7 @@ namespace DR.WebApi.Controllers
             else
             {
                 total = Picture.Count();
-                Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.Product && x.PhotoType == photoType).ToList();
+                Picture = Picture.Where(x => x.Disable == false && x.PictureType == PictureType.Product && x.PhotoType == photoType).OrderByDescending(x => x.RecommendIndex).ToList();
 
                 foreach (var item in Picture)
                 {
@@ -364,7 +364,8 @@ namespace DR.WebApi.Controllers
                 CreateTime = WordLists.CreateTime,
                 HtmlContent = WordLists.HtmlContent,
                 HtmlExplain = WordLists.HtmlExplain,
-                HtmlTitle = WordLists.HtmlTitle
+                HtmlTitle = WordLists.HtmlTitle,
+                AttachedPath = WordLists.AttachedPath
             };
             return Ok(new ApiResponse(WordList));
         }

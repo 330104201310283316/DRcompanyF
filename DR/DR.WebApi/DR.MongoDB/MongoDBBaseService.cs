@@ -39,7 +39,14 @@ namespace DR.MongoDB
         {
             return _collection.Find(T => true).ToList();
         }
-
+        /// <summary>
+        /// 分页获取
+        /// </summary>
+        /// <returns></returns>
+        public List<T> Get(DateTime StartTime, DateTime EndTime, int Skip, int limit)
+        {
+            return _collection.Find(T => T.CreateTime >= StartTime && T.CreateTime <= EndTime).Skip(Skip).Limit(limit).ToList();
+        }
         /// <summary>
         /// 获取单个
         /// </summary>

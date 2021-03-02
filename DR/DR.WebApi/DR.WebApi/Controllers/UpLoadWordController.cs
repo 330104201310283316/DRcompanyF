@@ -67,7 +67,8 @@ namespace DR.WebApi.Controllers
                     PictureID = body.id,
                     LastModifiedTime = DateTime.Now,
                     HtmlExplain = body.HtmlExplain,
-                    HtmlTitle = body.HtmlTitle
+                    HtmlTitle = body.HtmlTitle,
+                    AttachedPath = body.AttachedPath
                 };
                 context.Add(WordInfos);
                 context.SaveChanges();
@@ -80,6 +81,7 @@ namespace DR.WebApi.Controllers
                 WordInfo.HtmlContent = body.HtmlContent;
                 WordInfo.HtmlExplain = body.HtmlExplain;
                 WordInfo.HtmlTitle = body.HtmlTitle;
+                WordInfo.AttachedPath = body.AttachedPath;
                 context.SaveChanges();
                 WordRedis.Del();
             }
@@ -173,7 +175,8 @@ namespace DR.WebApi.Controllers
                 CreateTime = wordList.CreateTime,
                 HtmlContent = wordList.HtmlContent,
                 HtmlExplain = wordList.HtmlExplain,
-                HtmlTitle = wordList.HtmlTitle
+                HtmlTitle = wordList.HtmlTitle,
+                 
             };
             return Ok(new ApiResponse(WordInfos));
         }

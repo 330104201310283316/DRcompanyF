@@ -36,5 +36,9 @@ namespace DR.Models
         /// </summary>
         [Required]
         public string HtmlExplain { get; set; }
+        /// <summary>
+        /// 附加文件只能上传pdf
+        /// </summary>
+        public string AttachedPath { get; set; }
     }
 }

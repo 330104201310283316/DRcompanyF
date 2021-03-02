@@ -111,8 +111,8 @@ namespace DR.WebApi.Controllers
             var tests = _baseService.GetWriteBy<Test>(x => x.Disable == false);
             tests.Disable = true;
             int test = _baseService.ModifyNo(tests);
-            if(test<=0)
-                return Ok(new ApiResponse(code:CodeAndMessage.修改失败));
+            if (test <= 0)
+                return Ok(new ApiResponse(code: CodeAndMessage.修改失败));
             return Ok(new ApiResponse(test));
         }
 
@@ -199,5 +199,37 @@ namespace DR.WebApi.Controllers
             Response.Body.WriteAsync(ms.GetBuffer(), 0, Convert.ToInt32(ms.Length));
             Response.Body.Close();
         }
+        /// <summary>
+        /// 获取MongoDB数据
+        /// </summary>
+        /// <param name="StartTime"></param>
+        /// <param name="EndTime"></param>
+        /// <param name="Skip"></param>
+        /// <param name="limit"></param>
+        [HttpGet]
+        [Route("GetMongoDB")]
+        // [AuthFilter]//身份认证，不带token或者token错误会被拦截器拦截进不来这个接口
+        public IActionResult GetMongoDB(DateTime StartTime, DateTime EndTime, int Skip, int limit)
+        {
+            DBRequestLogs _logs = new DBRequestLogs();
+            var list = _logs.Get(StartTime, EndTime, Skip, limit).GroupBy(x => x.ApiName.Split("?")[0]);
+            Dictionary<string, Dictionary<DateTime, int>> Time = new Dictionary<string, Dictionary<DateTime, int>>();
+
+            foreach (var item in list)
+            {
+                foreach (var Citem in item.GroupBy(x => x.CreateTime.Day))
+                {
+                    TimeDto timeDto = new TimeDto() { DateTime = Citem.Key, Count = Citem.Count() };
+                    List<TimeDto> ChangeTiem = new List<TimeDto>();
+                    ChangeTiem.Add(timeDto);
+                    Time.Add(item.Key+ Citem.Key, SequenceID.CompletionTime(StartTime, EndTime, ChangeTiem));
+                }
+            }
+            return Ok(new ApiResponse(Time, Time.Count()));
+
+        }
+
+
+
     }
 }

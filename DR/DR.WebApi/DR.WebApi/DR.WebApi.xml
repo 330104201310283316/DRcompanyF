@@ -232,6 +232,15 @@
             <param name="pixel">像素大小</param>
             <returns></returns>
         </member>
+        <member name="M:DR.WebApi.Controllers.TestController.GetMongoDB(System.DateTime,System.DateTime,System.Int32,System.Int32)">
+            <summary>
+            获取MongoDB数据
+            </summary>
+            <param name="StartTime"></param>
+            <param name="EndTime"></param>
+            <param name="Skip"></param>
+            <param name="limit"></param>
+        </member>
         <member name="T:DR.WebApi.Controllers.UpLoadWordController">
             <summary>
             word文档API

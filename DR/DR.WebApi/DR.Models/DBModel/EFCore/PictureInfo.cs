@@ -38,10 +38,10 @@ namespace DR.Models
         [Required]
         public string PictureExplain { get; set; }
         /// <summary>
-        ///推荐指数
+        ///推荐指数(值越大，越在前面展示)
         /// </summary>
         [Required]
-        public RecommendIndex RecommendIndex { get; set; }
+        public int RecommendIndex { get; set; }
         /// <summary>
         ///图片分类
         /// </summary>

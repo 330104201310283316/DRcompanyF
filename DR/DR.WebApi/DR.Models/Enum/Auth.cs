@@ -33,33 +33,6 @@ namespace DR.Models
         FreeWeb = 1,
 
     }
-    /// <summary>
-    /// 推荐指数
-    /// </summary>
-    public enum RecommendIndex
-    {
-        /// <summary>
-        ///一星
-        /// </summary>
-        one = 1,
-        /// <summary>
-        /// 二星
-        /// </summary>
-        Two = 2,
-        /// <summary>
-        /// 三星
-        /// </summary>
-        Three = 3,
-        /// <summary>
-        /// 四星
-        /// </summary>
-        Four = 4,
-        /// <summary>
-        ///五星
-        /// </summary>
-        Five = 5,
-
-    }
 
     /// <summary>
     /// 图片分类
